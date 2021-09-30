@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "325241075871",
+    "project_id": "auto-service-habn",
+    "storage_bucket": "auto-service-habn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325241075871:android:819a1b2e706af227314aaa",
+        "android_client_info": {
+          "package_name": "com.kano.auto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325241075871-ntv5218secujblmtj68cfmbo481ff7pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKqW60Knlczm8B4tj98CA_L-DRXsFfTH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325241075871-ntv5218secujblmtj68cfmbo481ff7pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

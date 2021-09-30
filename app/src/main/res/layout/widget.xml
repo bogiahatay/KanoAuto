@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/btnKanoAuto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_btn">
+
+        <TextView
+            android:id="@+id/btnMove"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <ImageView
+            android:id="@+id/imv_type_auto"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_pets_30" />
+
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            tools:text="fishing" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/vAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnKanoAuto">
+
+        <ImageView
+            android:id="@+id/btnStart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_btn"
+            android:padding="5dp"
+            android:src="@drawable/ic_play" />
+
+        <ImageView
+            android:id="@+id/btnSetting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_btn"
+            android:padding="10dp"
+            android:src="@drawable/ic_settings" />
+
+        <ImageView
+            android:id="@+id/btnTypeAuto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_btn"
+            android:padding="8dp"
+            android:src="@drawable/ic_adb" />
+
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_btn"
+            android:padding="8dp"
+            android:src="@drawable/ic_more_vert" />
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_btn"
+            android:padding="8dp"
+            android:src="@drawable/ic_close" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnKanoAuto"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bg_log"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        tools:text="fishing" />
+
+    <TextView
+        android:id="@+id/tvTimeEnd"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnKanoAuto"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bg_time"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        android:visibility="gone"
+        tools:text="100:00" />
+
+    <ScrollView
+        android:id="@+id/vFulLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnKanoAuto"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvFulLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_log_full"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                tools:text="fishingf" />
+
+            <ImageView
+                android:id="@+id/btnLogFullClose"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignEnd="@id/tvFulLog"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/ic_close" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnKanoAuto">
+
+        <ImageView
+            android:id="@+id/imvPreview"
+            android:layout_width="800px"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imvPreviewCut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imvPreviewCut2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/imvPreviewCut"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

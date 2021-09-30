@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="widgetBackground">#3F000000</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="red">#e53935</color>
+    <color name="pink">#e91e63</color>
+    <color name="purple">#9c27b0</color>
+    <color name="deepPurple">#673ab7</color>
+    <color name="indigo">#3f51b5</color>
+    <color name="blue">#2196f3</color>
+    <color name="lightBlue">#03a9f4</color>
+    <color name="cyan">#00bcd4</color>
+    <color name="teal">#009688</color>
+    <color name="green">#4caf50</color>
+    <color name="lightGreen">#8bc34a</color>
+    <color name="lime">#cddc39</color>
+    <color name="yellow">#ffeb3b</color>
+    <color name="amber">#ffc107</color>
+    <color name="orange">#ff9800</color>
+    <color name="deepOrange">#ff5722</color>
+    <color name="brown">#795548</color>
+    <color name="grey">#9E9E9E</color>
+
+    <color name="black_5">#0c000000</color>
+    <color name="black_10">#19000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_30">#4D000000</color>
+    <color name="black_40">#66000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_70">#B3000000</color>
+    <color name="black_80">#CC000000</color>
+
+
+    <color name="white_5">#0DFFFFFF</color>
+    <color name="white_10">#19ffffff</color>
+    <color name="white_20">#33ffffff</color>
+    <color name="white_30">#4Dffffff</color>
+    <color name="white_40">#66FFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+
+    <color name="cl_1">#FFFFFF</color>
+    <color name="cl_2">#DCDCDC</color>
+    <color name="cl_3">#BBBBBB</color>
+    <color name="cl_5">#575757</color>
+    <color name="cl_6">#2D2D2D</color>
+    <color name="cl_7">#181818</color>
+
+    <integer-array name="mycolors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/pink</item>
+        <item>@color/orange</item>
+        <item>@color/green</item>
+        <item>@color/purple</item>
+    </integer-array>
+
+    <array name="arrColorHeart">
+        <item name="red_300" type="color">#f36c60</item>
+        <item name="red_400" type="color">#e84e40</item>
+        <item name="red_500" type="color">#e51c23</item>
+        <item name="red_600" type="color">#dd191d</item>
+        <item name="red_700" type="color">#d01716</item>
+        <item name="red_800" type="color">#c41411</item>
+        <item name="red_900" type="color">#b0120a</item>
+
+        <item name="pink_300" type="color">#f06292</item>
+        <item name="pink_400" type="color">#ec407a</item>
+        <item name="pink_500" type="color">#e91e63</item>
+        <item name="pink_600" type="color">#d81b60</item>
+        <item name="pink_700" type="color">#c2185b</item>
+        <item name="pink_800" type="color">#ad1457</item>
+        <item name="pink_900" type="color">#880e4f</item>
+
+        <item name="purple_200" type="color">#ce93d8</item>
+        <item name="purple_300" type="color">#ba68c8</item>
+        <item name="purple_400" type="color">#ab47bc</item>
+        <item name="purple_500" type="color">#9c27b0</item>
+        <item name="purple_600" type="color">#8e24aa</item>
+        <item name="purple_700" type="color">#7b1fa2</item>
+        <item name="purple_800" type="color">#6a1b9a</item>
+        <item name="purple_900" type="color">#4a148c</item>
+
+        <item>@color/indigo</item>
+        <item>@color/blue</item>
+        <item>@color/lightBlue</item>
+        <item>@color/cyan</item>
+        <item>@color/teal</item>
+        <item>@color/green</item>
+        <item>@color/lightGreen</item>
+        <item>@color/lime</item>
+        <item>@color/yellow</item>
+        <item>@color/amber</item>
+        <item>@color/orange</item>
+        <item>@color/deepOrange</item>
+        <item>@color/brown</item>
+    </array>
+
+ </resources>

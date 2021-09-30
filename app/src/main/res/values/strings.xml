@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KanoAuto</string>
+
+    <string name="accessibility_service_description">TODO</string>
+    <string name="accessibility_service_name">KanoAuto</string>
+    <string name="accessibility_service_id">com.kano.auto/.service.AutoClickService</string>
+</resources>
