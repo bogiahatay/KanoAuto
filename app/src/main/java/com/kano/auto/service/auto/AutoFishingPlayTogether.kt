@@ -2,7 +2,6 @@ package com.kano.auto.service.auto
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.os.Handler
 import android.os.Process
 import android.view.Menu
 import android.view.View
@@ -191,7 +190,7 @@ object AutoFishingPlayTogether : AutoBase() {
                 delay(2000) {
                     MethodUtils.gotoSettings(context)
                     delay(2000) {
-                        MethodUtils.killApp(context, AutoLoginPlayTogether.packageName)
+                        MethodUtils.killApp(context, AutoFeedFacebook.packageName)
                         delay(2000) {
                             Process.killProcess(Process.myPid());
                         }

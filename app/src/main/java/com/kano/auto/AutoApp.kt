@@ -5,6 +5,7 @@ import android.os.Handler
 import com.kano.auto.db.api.FishingConfig
 import com.kano.auto.db.api.IOnApiRequest
 import com.kano.auto.ml.MLKit
+import com.kano.auto.ml.MLKitText
 import com.kano.auto.service.auto.saveDb
 
 class AutoApp : Application() {
@@ -19,6 +20,7 @@ class AutoApp : Application() {
         instance = this
         initConfig()
         MLKit.init()
+        MLKitText.init()
     }
 
     private fun initConfig() {

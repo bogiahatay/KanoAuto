@@ -1,15 +1,12 @@
 package com.kano.auto.service.auto
 
 import android.os.CountDownTimer
-import android.os.Handler
 import android.os.Process
-import com.kano.auto.MainActivity
 import com.kano.auto.ext.delay
 import com.kano.auto.ext.gone
 import com.kano.auto.service.widgetService
 import com.kano.auto.utils.MethodUtils
 import com.kano.auto.ext.visibility
-import kotlin.system.exitProcess
 
 object ScheduleAuto {
 
@@ -42,7 +39,7 @@ object ScheduleAuto {
                         delay(2000) {
                             widgetService.stopWidgetService()
                             delay(2000) {
-                                MethodUtils.killApp(context, AutoLoginPlayTogether.packageName)
+                                MethodUtils.killApp(context, AutoFeedFacebook.packageName)
                                 delay(2000) {
                                     Process.killProcess(Process.myPid());
                                 }

@@ -6,10 +6,13 @@ import com.kano.auto.service.capture.ScreenshotManager
 import com.kano.auto.service.widgetService
 import com.kano.auto.ext.visibility
 import com.kano.auto.ml.MLKit
+import com.kano.auto.ml.MLKitText
 import com.kano.auto.service.heightDevice
 import com.kano.auto.utils.MLog
 
 object AutoScreenShot : AutoBase() {
+
+
 
     fun toggle(): Boolean {
         isRunning = !isRunning
@@ -26,7 +29,6 @@ object AutoScreenShot : AutoBase() {
 
     fun addDetectView() {
         removeDetectView()
-//        arrDetectView.addAll(widgetService.addViewDetect(xDetectSize.toPixelW(), yDetectSize.toPixelH(), sizeDetectSize, sizeDetectSize, "bóng"))
     }
 
     fun removeDetectView() {
@@ -34,22 +36,17 @@ object AutoScreenShot : AutoBase() {
         arrDetectView.clear()
     }
 
-    val xDetectSize = 48F
-    val yDetectSize = 16F
-    val sizeDetectSize = (heightDevice / 2.5F).toInt()
-
     fun startAuto() {
         if (isRunning) {
             MLog.active = true;
             ScreenshotManager.getInstance().takeScreenshot { bitmap, timeCreate ->
                 if (bitmap != null) {
-//                    val cut = bitmap.cut(xDetectSize.toPixelW(), yDetectSize.toPixelH(), sizeDetectSize, sizeDetectSize)
-                    widgetService.imvPreview.visibility()
-                    widgetService.imvPreview.setImageBitmap(bitmap)
-                    MLKit.detectBitmap(bitmap)
 
-//                    bitmap.recycle()
-//                    cut.recycle()
+//                    widgetService.imvPreview.visibility()
+//                    widgetService.imvPreview.setImageBitmap(bitmap)
+//                    MLKit.detectBitmap(bitmap)
+//                    MLKitText.detectBitmap(bitmap)
+
                 }
                 delay(1000) {
                     startAuto()

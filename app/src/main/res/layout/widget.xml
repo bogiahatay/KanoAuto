@@ -164,7 +164,7 @@
 
         <ImageView
             android:id="@+id/imvPreview"
-            android:layout_width="800px"
+            android:layout_width="200px"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:visibility="gone" />

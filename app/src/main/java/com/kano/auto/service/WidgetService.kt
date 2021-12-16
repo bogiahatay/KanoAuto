@@ -11,7 +11,6 @@ import android.graphics.Point
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
-import android.os.PowerManager
 import android.os.Process
 import android.util.TypedValue
 import android.view.*
@@ -19,7 +18,6 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.kano.auto.MainActivity
 import com.kano.auto.R
@@ -178,7 +176,7 @@ class WidgetService : Service() {
     fun showSetting() {
 
         if (TYPE_AUTO == 1) {
-//            AutoLoginPlayTogether.showSettings(btnSetting)
+            AutoFeedFacebook.showSettings(btnSetting)
         }
         //AutoFishingPlayTogether
         if (TYPE_AUTO == 2) {
@@ -268,7 +266,7 @@ class WidgetService : Service() {
     fun showAutoType() {
         val popup = PopupMenu(context, btnTypeAuto)
         val menu: Menu = popup.menu
-        menu.add(1, 1, 1, "Login PlayTogether")
+        menu.add(1, 1, 1, "Feed Facebook")
         menu.add(2, 2, 2, "Fishing PlayTogether")
         menu.add(3, 3, 3, "ScreenShot")
 
@@ -282,9 +280,9 @@ class WidgetService : Service() {
     fun startAuto() {
         //AutoLoginPlayTogether
         if (TYPE_AUTO == 1) {
-            val status = AutoLoginPlayTogether.toggle()
+            val status = AutoFeedFacebook.toggle()
             btnStart.setImageResource(if (status) R.drawable.ic_stop else R.drawable.ic_play)
-            tvMessage.text = "Login"
+            tvMessage.text = "Facebook"
         }
         //AutoFishingPlayTogether
         if (TYPE_AUTO == 2) {
@@ -302,11 +300,10 @@ class WidgetService : Service() {
 
     fun stopWidgetService() {
         stopSelf()
-//        exitProcess(0);
     }
 
     fun release() {
-        AutoLoginPlayTogether.release()
+        AutoFeedFacebook.release()
         AutoFishingPlayTogether.release()
         AutoScreenShot.release()
         AutoScreenOnOff.release()
@@ -398,7 +395,7 @@ class WidgetService : Service() {
         initScreenSize()
         MLog.e(TAG, "onConfigurationChanged : " + newConfig.orientation)
 
-        AutoLoginPlayTogether.onConfigurationChanged(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        AutoFeedFacebook.onConfigurationChanged(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
         AutoFishingPlayTogether.onConfigurationChanged(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
     }
 

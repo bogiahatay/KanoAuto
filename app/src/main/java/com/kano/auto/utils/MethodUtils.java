@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -56,11 +57,11 @@ public class MethodUtils {
 
     public static void startApp(Context context, String packageName) {
         try {
-            Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+//            Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+            Intent launchIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://feed"));
             launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             (context).startActivity(launchIntent);
         } catch (Exception e) {
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -74,8 +75,10 @@ public class MethodUtils {
         }
         String foregroundApp = detector.getForegroundApp(context);
         if (foregroundApp == null) {
+            MLog.e("ForegroundApp null");
             return true;
         }
+        MLog.e("ForegroundApp -> " + foregroundApp);
         return packageName.equals(foregroundApp);
     }
 

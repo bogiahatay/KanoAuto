@@ -49,6 +49,8 @@ open class MainActivity : AppCompatActivity() {
         context = this
         isRunning = true
         ping()
+
+        Utils.checkPermission(this, true)
         button.setOnClickListener {
 
             if (checkPermission()) {

@@ -78,4 +78,44 @@ class AutoClickService : AccessibilityService() {
         autoClickService = null
         super.onDestroy()
     }
+
+    fun scroll() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return
+        }
+
+        MLog.e(TAG, "scroll to bottom")
+
+        val path = Path()
+
+        path.moveTo(widthDevice.toFloat() / 2, heightDevice.toFloat() / 4 * 3)
+        path.lineTo(widthDevice.toFloat() / 2, heightDevice.toFloat() / 4 * 1)
+
+        val gestureDescription = GestureDescription.Builder()
+                .addStroke(StrokeDescription(path, 0, 1000.toLong()))
+                .build()
+
+        dispatchGesture(gestureDescription, null, null)
+    }
+
+    fun back() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return
+        }
+
+        MLog.e(TAG, "back")
+
+        performGlobalAction(GLOBAL_ACTION_BACK)
+    }
+
+    fun hideKeyboard() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return
+        }
+
+        MLog.e(TAG, "hide Keyboard")
+
+        performGlobalAction(SHOW_MODE_HIDDEN)
+
+    }
 }

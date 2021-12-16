@@ -37,6 +37,7 @@ object LogAuto {
     val keyThaMoi = "thả mồi"
     val keyKeo = "kéo"
     val keyThanhCong = "thành công"
+    val keyDetectScreen = "Screen"
 
     var mapLog: LinkedHashMap<String, String> = linkedMapOf()
 
@@ -114,7 +115,7 @@ object LogAuto {
         tvLog.text = text
     }
 
-    private fun log(key: String, value: Any) {
+    public fun log(key: String, value: Any) {
         mapLog[key] = value.toString()
     }
 
