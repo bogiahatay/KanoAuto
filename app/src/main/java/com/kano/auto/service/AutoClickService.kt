@@ -15,6 +15,7 @@ import com.kano.auto.ext.logd
 import com.kano.auto.ext.shortToast
 import com.kano.auto.ext.shortToastLong
 import com.kano.auto.utils.MLog
+import java.util.*
 
 
 /**
@@ -58,7 +59,7 @@ class AutoClickService : AccessibilityService() {
         MLog.e(TAG, "click : $x $y")
 
         val path = Path()
-        path.moveTo(x.toFloat() - 3, y.toFloat() - 3)
+        path.moveTo(x.toFloat() - 2, y.toFloat() - 2)
         val gestureDescription = GestureDescription.Builder()
                 .addStroke(StrokeDescription(path, 0, time.toLong()))
                 .build()
@@ -87,12 +88,20 @@ class AutoClickService : AccessibilityService() {
         MLog.e(TAG, "scroll to bottom")
 
         val path = Path()
+        val ranX1 = kotlin.random.Random.nextDouble(0.2, 0.8).toFloat()
+        val ranX2 = kotlin.random.Random.nextDouble(0.2, 0.8).toFloat()
 
-        path.moveTo(widthDevice.toFloat() / 2, heightDevice.toFloat() / 4 * 3)
-        path.lineTo(widthDevice.toFloat() / 2, heightDevice.toFloat() / 4 * 1)
+        val ranY1 = kotlin.random.Random.nextDouble(0.7, 0.9).toFloat()
+        val ranY2 = kotlin.random.Random.nextDouble(0.1, 0.3).toFloat()
+
+        path.moveTo(widthDevice.toFloat() * ranX1, heightDevice.toFloat() * ranY1)
+        path.lineTo(widthDevice.toFloat() * ranX2, heightDevice.toFloat() * ranY2)
+
+        val time = kotlin.random.Random.nextInt(800, 1500);
+
 
         val gestureDescription = GestureDescription.Builder()
-                .addStroke(StrokeDescription(path, 0, 1000.toLong()))
+                .addStroke(StrokeDescription(path, 0, time.toLong()))
                 .build()
 
         dispatchGesture(gestureDescription, null, null)

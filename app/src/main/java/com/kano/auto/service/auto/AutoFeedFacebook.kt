@@ -17,6 +17,7 @@ import com.kano.auto.service.log.LogAuto
 import com.kano.auto.service.statusBarHeight
 import com.kano.auto.service.widgetService
 import com.kano.auto.utils.StringUtils
+import java.util.*
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -102,9 +103,11 @@ object AutoFeedFacebook : AutoBase() {
 //                widgetService.imvPreview.setImageBitmap(bitmap)
                 MLKitText.detectBitmap(bitmap, object : MLKitText.IOnTextRecognizer {
                     override fun onSuccess(arrTextBlock: List<Text.TextBlock>) {
-//                        if (isScreenHome(arrText)) {
-//
-//                        }
+                        if (isScreenHome(arrTextBlock)) {
+                            LogAuto.log("HomeScreen", "true")
+                        } else {
+                            LogAuto.log("HomeScreen", "false")
+                        }
                         if (isScreenComments(arrTextBlock)) {
                             timeDetect = 10000
                             delay(6000) {
@@ -148,8 +151,12 @@ object AutoFeedFacebook : AutoBase() {
     }
 
 
-    private fun isLike(arrTextBlock: List<Text.TextBlock>): Boolean {
+    private var lastLike = 0L
 
+    private fun isLike(arrTextBlock: List<Text.TextBlock>): Boolean {
+        if (Calendar.getInstance().timeInMillis - lastLike < 30000) {
+            return false
+        }
         val str1 = "thich"
         val str2 = "binh luan"
         val str3 = "chia se"
@@ -179,6 +186,7 @@ object AutoFeedFacebook : AutoBase() {
                 val avg = (blockLike.boundingBox!!.top + blockComments.boundingBox!!.top + blockShare.boundingBox!!.top) / 3
                 if (abs(blockLike.boundingBox!!.top - avg) < 30) {
                     LogAuto.log("Action", "Click Like")
+                    lastLike = Calendar.getInstance().timeInMillis;
                     autoClickService?.click(blockLike.boundingBox!!.left + blockLike.boundingBox!!.width() / 2, blockLike.boundingBox!!.top + blockLike.boundingBox!!.height() / 2)
                     return true
                 }
@@ -187,7 +195,12 @@ object AutoFeedFacebook : AutoBase() {
         return false
     }
 
+    private var lastViewComments = 0L
+
     private fun isViewComments(arrTextBlock: List<Text.TextBlock>): Boolean {
+        if (Calendar.getInstance().timeInMillis - lastViewComments < 30000) {
+            return false
+        }
         val str1 = "thich"
         val str2 = "binh luan"
         val str3 = "chia se"
@@ -216,7 +229,8 @@ object AutoFeedFacebook : AutoBase() {
             if (blockLike != null && blockComments != null && blockShare != null) {
                 val avg = (blockLike.boundingBox!!.top + blockComments.boundingBox!!.top + blockShare.boundingBox!!.top) / 3
                 if (abs(blockLike.boundingBox!!.top - avg) < 30) {
-                    LogAuto.log("Action", "Click Like")
+                    LogAuto.log("Action", "Click ViewComments")
+                    lastViewComments = Calendar.getInstance().timeInMillis
                     autoClickService?.click(blockComments.boundingBox!!.left + blockComments.boundingBox!!.width() / 2, blockComments.boundingBox!!.top + blockComments.boundingBox!!.height() / 2)
                     return true
                 }
