@@ -17,6 +17,7 @@ import com.kano.auto.service.log.LogAuto
 import com.kano.auto.service.statusBarHeight
 import com.kano.auto.service.widgetService
 import com.kano.auto.utils.StringUtils
+import kotlin.math.abs
 import kotlin.random.Random
 
 object AutoFeedFacebook : AutoBase() {
@@ -107,9 +108,11 @@ object AutoFeedFacebook : AutoBase() {
                         if (isScreenComments(arrTextBlock)) {
                             timeDetect = 10000
                             delay(6000) {
+                                LogAuto.log("Action", "Hide Keyboard")
                                 autoClickService?.hideKeyboard()
                             }
                             delay(8000) {
+                                LogAuto.log("Action", "Press Back")
                                 autoClickService?.back()
                             }
                             LogAuto.log("Screen", "Comments");
@@ -122,10 +125,10 @@ object AutoFeedFacebook : AutoBase() {
                             } else {
                                 if (isLike(arrTextBlock)) {
                                     LogAuto.log("Action", "Like");
-                                }
-                                SystemClock.sleep(200)
-                                if (isScroll()) {
-                                    LogAuto.log("Action", "Scroll");
+                                } else {
+                                    if (isScroll()) {
+                                        LogAuto.log("Action", "Scroll");
+                                    }
                                 }
                             }
 
@@ -173,9 +176,12 @@ object AutoFeedFacebook : AutoBase() {
                 }
             }
             if (blockLike != null && blockComments != null && blockShare != null) {
-                LogAuto.log("Action", "Click Like")
-                autoClickService?.click(blockLike.boundingBox!!.left + blockLike.boundingBox!!.width() / 2, blockLike.boundingBox!!.top + blockLike.boundingBox!!.height() / 2)
-                return true
+                val avg = (blockLike.boundingBox!!.top + blockComments.boundingBox!!.top + blockShare.boundingBox!!.top) / 3
+                if (abs(blockLike.boundingBox!!.top - avg) < 30) {
+                    LogAuto.log("Action", "Click Like")
+                    autoClickService?.click(blockLike.boundingBox!!.left + blockLike.boundingBox!!.width() / 2, blockLike.boundingBox!!.top + blockLike.boundingBox!!.height() / 2)
+                    return true
+                }
             }
         }
         return false
@@ -208,9 +214,12 @@ object AutoFeedFacebook : AutoBase() {
                 }
             }
             if (blockLike != null && blockComments != null && blockShare != null) {
-                LogAuto.log("Action", "Click Like")
-                autoClickService?.click(blockComments.boundingBox!!.left + blockComments.boundingBox!!.width() / 2, blockComments.boundingBox!!.top + blockComments.boundingBox!!.height() / 2)
-                return true
+                val avg = (blockLike.boundingBox!!.top + blockComments.boundingBox!!.top + blockShare.boundingBox!!.top) / 3
+                if (abs(blockLike.boundingBox!!.top - avg) < 30) {
+                    LogAuto.log("Action", "Click Like")
+                    autoClickService?.click(blockComments.boundingBox!!.left + blockComments.boundingBox!!.width() / 2, blockComments.boundingBox!!.top + blockComments.boundingBox!!.height() / 2)
+                    return true
+                }
             }
         }
         return false
@@ -225,20 +234,28 @@ object AutoFeedFacebook : AutoBase() {
     }
 
     private fun isScreenComments(arrTextBlock: List<Text.TextBlock>): Boolean {
-        val str1 = "phu hop nhat"
-        val str2 = "moi nhat"
-        val str3 = "tat ca binh luan"
-        val str4 = "viet binh luan"
+        val str1 = "viet binh luan"
+
+        val str2 = "phu hop nhat"
+        val str3 = "moi nhat"
+        val str4 = "tat ca binh luan"
+        val str5 = "chua co binh luan nao"
+        val str6 = "cu nhat"
 
         var blockTypeComment: Text.TextBlock? = null
         var blockComments: Text.TextBlock? = null
 
         for (textBlock in arrTextBlock) {
             val text = StringUtils.removeAccent(textBlock.text).toLowerCase()
-            if (text.contains(str4)) {
+            if (text.contains(str1)) {
                 blockComments = textBlock
             }
-            if (text.contains(str1) || text.contains(str2) || text.contains(str3)) {
+            if (text.contains(str2)
+                    || text.contains(str3)
+                    || text.contains(str4)
+                    || text.contains(str5)
+                    || text.contains(str6)
+            ) {
                 blockTypeComment = textBlock
             }
         }
