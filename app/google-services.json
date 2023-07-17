@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:325241075871:android:819a1b2e706af227314aaa",
         "android_client_info": {
-          "package_name": "com.kano.auto"
+          "package_name": "net.iblankdigital.auto"
         }
       },
       "oauth_client": [
